@@ -1,73 +1,60 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# nest
+[nest](https://www.youtube.com/watch?v=GHTA143_b-s)
+## 跟随youtube学nest
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### 🚀零、启动项目
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+```shell
+yarn // install
+yarn db:dev:restart // start postgres in docker and push migrations
+yarn start:dev // start api in dev mode
 ```
 
-## Running the app
+### 一、完成功能
+- [x] signup
+- [x] signin
+- [x] GetUser
+- [x] editorUser
+- [x] bookmark CRUD
 
-```bash
-# development
-$ npm run start
+### 二、所用工具和地址
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
+- 1. 请求工具 ---  [Insomnia](https://insomnia.rest/download)
+- 2. 数据库管理  ---  [docker](https://www.docker.com/products/docker-desktop/)
+- 3. 测试请求库 --- [PactumJS](https://pactumjs.github.io/introduction/quick-start.html#system-requirements)
+- 4. nest文档 ---- [nest](https://docs.nestjs.com/)
+- 5. JWT --- [Jwt](https://jwt.io/)
+- 6. 数据库模型创建 --- [prisma](https://www.prisma.io/docs/concepts/components/prisma-client)
+
+### 三、e2etest
+
+上述列举功能
+
+
+### 四、要点
+
+- module and controller
+- dto
+- pipe（global pipe）
+- hash user password
+- postgres start & prisma migrations
+- config module
+- passportjs & jwt
+- access_token
+- guards
+- param decorator
+- e2e 
+- test database
+- test database restart & migrations
+- dotenv cli with prisma
+- Auth & User & BookMarks e2e tests
+
+### 五、不好记的npm
+
+```shell
+npx prisma --help
+
+yarn add dotenv-cli
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
