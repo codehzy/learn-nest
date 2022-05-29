@@ -7,12 +7,14 @@ import { AuthDto } from './dto';
 import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     private prisma: PrismaService,
     private config: ConfigService,
+    private jwt: JwtService,
   ) {}
 
   async signup(dto: AuthDto) {
@@ -27,7 +29,7 @@ export class AuthService {
         },
       });
 
-      return user;
+      return this.signToken(user.id, user.email);
     } catch (error) {
       // 处理email相同防止创建 用户抛错
       if (
@@ -63,6 +65,28 @@ export class AuthService {
     if (!pwMatches)
       throw new ForbiddenException('密码错误');
 
-    return user;
+    return this.signToken(user.id, user.email);
+  }
+
+  async signToken(
+    userId: number,
+    emial: string,
+  ): Promise<{ access_token: string }> {
+    const payLoad = {
+      sub: userId,
+      emial,
+    };
+
+    const secret = this.config.get('JWT_SECRET');
+    const token = await this.jwt.signAsync(
+      payLoad,
+      {
+        expiresIn: '15m',
+        secret: secret,
+      },
+    );
+    return {
+      access_token: token,
+    };
   }
 }
