@@ -1,5 +1,8 @@
 import { UserService } from './user.service';
-import { EditUserDto } from './dto';
+import {
+  CreateUserDto,
+  EditUserDto,
+} from './dto';
 import { JwtGuard } from '../auth/guard';
 import { User } from '@prisma/client';
 import {
@@ -7,11 +10,13 @@ import {
   Controller,
   Get,
   Patch,
+  Post,
   UseGuards,
 } from '@nestjs/common';
 import { GetUser } from '../auth/decorator';
+import { UserEntity } from './entities';
 
-@UseGuards(JwtGuard)
+// @UseGuards(JwtGuard)
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
@@ -33,5 +38,19 @@ export class UserController {
     @Body() dto: EditUserDto,
   ) {
     return this.userService.editUser(userId, dto);
+  }
+
+  @Get('list')
+  async findAll(): Promise<UserEntity[]> {
+    console.log(this.userService.findAll());
+
+    return await this.userService.findAll();
+  }
+
+  @Post('create')
+  async createUser(@Body() dto: CreateUserDto) {
+    console.log(`新增了${dto}`);
+
+    return await this.userService.createUser(dto);
   }
 }
